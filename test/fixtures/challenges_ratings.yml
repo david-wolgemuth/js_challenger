@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quality: 1
+  difficulty: 1
+  user: one
+  challenge: one
+
+two:
+  quality: 1
+  difficulty: 1
+  user: two
+  challenge: two
