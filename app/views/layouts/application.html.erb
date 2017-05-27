@@ -10,6 +10,13 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    
+    <% [:success, :info, :warning, :danger].each do |message_type| %>
+      <% if flash[message_type] %>
+        <%= render(partial: 'shared/messages', locals: { messages: flash[message_type], class_name: message_type.to_s }) %>
+      <% end %>
+    <% end %>
+    
     <div class="container">
       <%= yield %>
     </div>
