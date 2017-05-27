@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   
+  has_many :challenges
+  
   validates :username,
             presence: true,
             format: { with: /\A[a-zA-Z0-9_-]+\z/, message: 'Must not contain spaces or special characters (`-` and `_` permitted)'},

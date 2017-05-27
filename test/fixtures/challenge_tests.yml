@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inputs: MyText
+  return_value: MyString
+  challenge: one
+
+two:
+  inputs: MyText
+  return_value: MyString
+  challenge: two

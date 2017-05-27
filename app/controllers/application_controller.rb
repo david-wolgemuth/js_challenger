@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   
   # ----- HELPERS
   
+  def logged_in_user
+    if @logged_in_user.nil?
+      @logged_in_user = User.find(session[:user_id]) 
+    end
+    @logged_in_user
+  end
+  
   def render_errors(errors, redirect_url: :back)
     render_messages(errors, class_name: :danger, redirect_url: redirect_url) 
   end

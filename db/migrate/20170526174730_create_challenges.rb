@@ -5,7 +5,7 @@ class CreateChallenges < ActiveRecord::Migration[5.1]
       t.string :function_name
       t.text :description
       t.text :parameters
-      t.text :tests
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

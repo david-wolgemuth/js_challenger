@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'challenges#index'
 
   resources :sessions
   resources :users
+  resources :challenges
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

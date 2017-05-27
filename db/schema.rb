@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526175729) do
+ActiveRecord::Schema.define(version: 20170527184558) do
+
+  create_table "challenge_tests", force: :cascade do |t|
+    t.text "inputs"
+    t.string "return_value"
+    t.integer "challenge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_challenge_tests_on_challenge_id"
+  end
 
   create_table "challenges", force: :cascade do |t|
     t.string "title"
     t.string "function_name"
     t.text "description"
     t.text "parameters"
-    t.text "tests"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
   create_table "challenges_ratings", force: :cascade do |t|
@@ -78,15 +88,6 @@ ActiveRecord::Schema.define(version: 20170526175729) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users_challenges", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "challenge_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["challenge_id"], name: "index_users_challenges_on_challenge_id"
-    t.index ["user_id"], name: "index_users_challenges_on_user_id"
   end
 
 end

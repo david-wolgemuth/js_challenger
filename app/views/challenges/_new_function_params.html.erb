@@ -1,0 +1,62 @@
+<a href class="previous-section">← Back to Title / Description</a>
+<div class="form-group">
+  <label for="challenge[function_name]">Function Name</label>
+  <input
+    id="challenge[function_name]"
+    type="text"
+    class="form-control"
+    name="challenge[function_name]"
+    placeholder="add2Numbers"
+  />
+</div>
+<div class="form-group">
+  <label>Parmeters</label>
+  <div class="input-group" style="display: none;">
+    <!-- Hidden div, gets duplicated for each parameter -->
+    <input
+      type="text"
+      class="form-control"
+    />
+    <select class="input-group-addon">
+      <% data_types.each do |data_type| %>
+        <option value="<%= data_type %>"><%= data_type.capitalize %></option>
+      <% end %>
+    </select>
+    <span class="input-group-addon btn btn-danger remove-parameter">
+      <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </span>
+  </div>
+  <button type="button" class="btn btn-block btn-info add-parameter">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i> Parameter
+  </button>
+</div>
+<button type="submit" class="btn btn-primary btn-block">Create Challenge</button>
+
+<script>
+(function () {
+  'use strict';
+  
+  function removeParentElement () {
+    $(this).parent().remove(); 
+  }
+  function addParameter (event, placeholder='paramName') {
+    const inputGroup = $(this).parent().find('.input-group').first().clone(); 
+    inputGroup.removeAttr('style');
+    const input = inputGroup.find('input').first();
+    input.attr('name', 'challenge[parameter_names][]');
+    input.attr('placeholder', placeholder);
+    const select = inputGroup.find('select').first();
+    select.attr('name', 'challenge[parameter_types][]');
+    this.before(inputGroup[0]);
+  }
+  
+  $('#challenge').on('click', '.remove-parameter', removeParentElement);
+  $('#challenge').on('click', '.add-parameter', addParameter);
+  
+  // Create 2 Params
+  const addParameterButton = $('#challenge .add-parameter')[0];
+  addParameter.call(addParameterButton, null, 'x');
+  addParameter.call(addParameterButton, null, 'y');
+  
+})();
+</script>

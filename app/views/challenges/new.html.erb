@@ -1,0 +1,42 @@
+<h1>New Challenge</h1>
+<style>
+  .invisible {
+    display: none;
+  }
+</style>
+
+<form id="challenge" action="/challenges" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <div id="title_description" class="">
+    <%= render 'new_title_description' %>
+  </div>
+  <div id="function_params" class="invisible">
+    <%= render 'new_function_params' %>
+  </div>
+  <div id="tags" class="">
+    <!-- render tags? -->
+  </div>
+  <div id="tests" class="invisible">
+    <!-- render tests?-->
+  </div>
+    
+</form>
+
+<script>
+(function () {
+  'use strict'; 
+  function showNextSection () {
+    const section = $(this).parent();
+    section.addClass('invisible');
+    section.next().removeClass('invisible');
+  }
+  function showPreviousSection (event) {
+    event.preventDefault();
+    const section = $(this).parent();
+    section.addClass('invisible');
+    section.prev().removeClass('invisible');
+  }
+  $('button.next-section').on('click', showNextSection);
+  $('a.previous-section').on('click', showPreviousSection);
+})();
+</script>
