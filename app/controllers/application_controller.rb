@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
-  
   # ----- HELPERS
   
   def render_errors(errors, redirect_url: :back)
@@ -9,13 +8,11 @@ class ApplicationController < ActionController::Base
   end
   
   def render_messages(messages, class_name: :success, redirect_url: :back)
-    puts "TYPE: #{class_name.inspect}"
-    puts "MESSAGES: #{messages.inspect}"
     flash[class_name] ||= []
     if messages.kind_of?(Array)
-        flash[class_name] += messages
+      flash[class_name] += messages
     else
-        flash[class_name] += [messages]
+      flash[class_name] += [messages]
     end
     if redirect_url.nil?
       return
@@ -27,6 +24,7 @@ class ApplicationController < ActionController::Base
   end
   
   def redirect_back(options = {})
+    # https://stackoverflow.com/questions/6118089/redirecting-back-doesnt-work-anymore
     if request.referer
       redirect_to request.referer, options
     else

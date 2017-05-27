@@ -2,20 +2,21 @@
 <form action="/users" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" name="user[username]" placeholder="french_fries">
+    <label for="username">Username *</label>
+    <input type="text" class="form-control" id="username" name="user[username]" placeholder="french_fries" required="required">
   </div>
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" class="form-control" id="email" name="user[email]" placeholder="user@email.com">
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name="user[password]" placeholder="abc123">
+    <label for="password">Password *</label>
+    <input type="password" class="form-control" id="password" name="user[password]" placeholder="abc123" required="required">
   </div>
   <div class="form-group">
-    <label for="password_confirmation">Confirm Password</label>
-    <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" placeholder="abc123">
+    <label for="password_confirmation">Confirm Password *</label>
+    <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" placeholder="abc123" required="required">
   </div>
+  <span>(* required)</span>
   <button class="btn btn-block btn-primary">Sign Up!</button>
 </form>
