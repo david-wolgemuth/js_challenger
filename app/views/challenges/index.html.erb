@@ -22,4 +22,12 @@
   </div>
 </div>
 
-<a class="pull-right" href="<%= new_challenge_path %>">Create New Challenge</a>
+<div>
+  &nbsp;<a class="pull-right" href="<%= new_challenge_path %>">Create New Challenge</a>
+</div>
+
+<ul class="list-group">
+  <% @challenges.each do |challenge| %>
+    <%= render(partial: 'challenge_list_item', locals: { challenge: challenge }) %>
+  <% end %>
+</ul>

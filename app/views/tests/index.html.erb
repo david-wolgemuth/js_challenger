@@ -1,0 +1,30 @@
+
+<h2><%= @challenge.title %></h2>
+<p><%= @challenge.description %></p>
+
+<ul>
+  <% @tests.each do |test| %>
+    <li>
+      <%= @challenge.test_string(test) %>
+    </li>
+  <% end %>
+</ul>
+
+<form action="/challenges/<%= @challenge.id %>/tests" method="POST">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <% @challenge.params_array.each do |input| %>
+    <label for="input-<%= input[:name] %>"><%= input[:name] %> (<%= input[:type]%>)</label>
+    <textarea
+      id="input-<%= input[:name] %>"
+      class="form-control"
+      name="inputs[]"
+      placeholder="[ 'a', 'b', 'c' ]"></textarea>
+  <% end %>
+  <label for="return_value">Return Value</label>
+  <textarea
+    id="return_value"
+    class="form-control"
+    name="return_value"
+    placeholder="Return Value"></textarea>
+  <button type="submit" class="btn btn-block btn-primary">Create Test</button>
+</form>

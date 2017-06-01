@@ -1,6 +1,8 @@
 class ChallengesController < ApplicationController
+  before_action :require_login, only: [:new, :create]
   
   def index
+    @challenges = Challenge.all
   end
 
   def new

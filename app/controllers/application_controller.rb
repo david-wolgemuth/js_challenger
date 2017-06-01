@@ -2,10 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   # ----- HELPERS
+
+  def require_login
+    if logged_in_user.nil?
+      render_errors('Login Required', redirect_url: new_user_path)
+    end
+  end
   
   def logged_in_user
     if @logged_in_user.nil?
-      @logged_in_user = User.find(session[:user_id]) 
+      @logged_in_user = User.find_by_id(session[:user_id]) 
     end
     @logged_in_user
   end
@@ -39,6 +45,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  helper_method :render_errors, :render_messages, :redirect_back
+  helper_method :logged_in_user, :render_errors, :render_messages, :redirect_back, :require_login
   
 end
