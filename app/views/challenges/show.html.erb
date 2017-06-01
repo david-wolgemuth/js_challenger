@@ -1,2 +1,22 @@
-<h1>Challenges#show</h1>
-<p>Find me in app/views/challenges/show.html.erb</p>
+<h3><%= @challenge.title %></h3>
+<p><%= @challenge.description %></p>
+<div>
+  <h3>
+    <button id="run" class="btn btn-secondary" data-toggle="tooltip" title="Also run with ctrl-enter">
+      Run Code
+      &#9654;
+    </button>
+    <span id="message"></span>
+  </h3>
+</div>
+<table class="table" id="test-results">
+  <thead>
+    <th>Call</th>
+  <th>Expected</th>
+    <th>Actual</th>
+    <th></th>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>

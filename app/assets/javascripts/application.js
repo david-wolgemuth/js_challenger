@@ -16,3 +16,6 @@
 //= require jquery
 //= require tether
 //= require bootstrap-sprockets
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});

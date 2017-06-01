@@ -6,9 +6,7 @@ class Challenge < ApplicationRecord
   has_many :tests, class_name: 'ChallengeTest'
   
   def test_string test
-    "#{function_name}(#{
-      test.inputs_hash.map{ |key, value| value.inspect }.join(', ')
-    }): #{test.return_value}"
+    "#{function_name}(#{test.args_string}): #{test.return_value}"
   end
 
   def params_array
